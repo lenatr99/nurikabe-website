@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Nurikabe Islands - A beautiful logic puzzle game for iOS">
+    <meta name="apple-itunes-app" content="app-id=YOUR_APP_ID">
+    <title>Nurikabe Islands - Logic Puzzle Game</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #F189B8;
+            --primary-dark: #d4709f;
+            --bg: #0f0f0f;
+            --text: #ffffff;
+            --text-muted: rgba(255, 255, 255, 0.7);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        /* Header */
+        header {
+            padding: 24px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--text);
+        }
+        
+        /* Hero */
+        .hero {
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .app-icon {
+            width: 120px;
+            height: 120px;
+            border-radius: 28px;
+            margin-bottom: 32px;
+            box-shadow: 0 20px 60px rgba(241, 137, 184, 0.3);
+        }
+        
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, var(--primary) 0%, #ffffff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .tagline {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .app-store-badge {
+            height: 54px;
+            transition: transform 0.2s, opacity 0.2s;
+        }
+        
+        .app-store-badge:hover {
+            transform: scale(1.05);
+            opacity: 0.9;
+        }
+        
+        /* Features */
+        .features {
+            padding: 80px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .features h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 48px;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 32px;
+        }
+        
+        .feature {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 28px;
+            text-align: center;
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+        }
+        
+        .feature h3 {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+        
+        .feature p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+        
+        /* Footer */
+        footer {
+            padding: 48px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+        
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+        
+        .copyright {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.4);
+        }
+        
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .tagline {
+                font-size: 1rem;
+            }
+            
+            .nav-links {
+                gap: 16px;
+            }
+            
+            .hero {
+                padding: 60px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="/" class="logo">Nurikabe Islands</a>
+            <ul class="nav-links">
+                <li><a href="privacy.html">Privacy</a></li>
+                <li><a href="support.html">Support</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <section class="hero container">
+            <img src="icon.png" alt="Nurikabe Islands App Icon" class="app-icon">
+            <h1>Nurikabe Islands</h1>
+            <p class="tagline">A beautiful logic puzzle game. Fill the seas, connect the islands, and master the ancient Japanese puzzle.</p>
+            <a href="https://apps.apple.com/app/idYOUR_APP_ID">
+                <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" 
+                     alt="Download on the App Store" 
+                     class="app-store-badge">
+            </a>
+        </section>
+        
+        <section class="features container">
+            <h2>Features</h2>
+            <div class="feature-grid">
+                <div class="feature">
+                    <div class="feature-icon">🧩</div>
+                    <h3>Hundreds of Puzzles</h3>
+                    <p>From easy 5×5 grids to challenging 15×15 masterpieces</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🎨</div>
+                    <h3>Beautiful Themes</h3>
+                    <p>Choose from multiple color themes to match your style</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">💡</div>
+                    <h3>Hints When Stuck</h3>
+                    <p>Get gentle nudges without spoiling the solution</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">📱</div>
+                    <h3>Works Offline</h3>
+                    <p>Play anywhere, no internet connection required</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="support.html">Support</a>
+                <a href="mailto:support@nurikabeislands.com">Contact</a>
+            </div>
+            <p class="copyright">© 2026 Nurikabe Islands. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

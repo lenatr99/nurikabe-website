@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Support for Nurikabe Islands">
+    <title>Support - Nurikabe Islands</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #F189B8;
+            --primary-dark: #d4709f;
+            --bg: #0f0f0f;
+            --text: #ffffff;
+            --text-muted: rgba(255, 255, 255, 0.7);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            line-height: 1.7;
+        }
+        
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        header {
+            padding: 24px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--text);
+        }
+        
+        main {
+            padding: 60px 0 100px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--primary);
+        }
+        
+        .intro {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 48px;
+        }
+        
+        h2 {
+            font-size: 1.4rem;
+            margin-top: 40px;
+            margin-bottom: 16px;
+            color: var(--text);
+        }
+        
+        p {
+            color: var(--text-muted);
+            margin-bottom: 16px;
+        }
+        
+        a {
+            color: var(--primary);
+        }
+        
+        .contact-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 32px;
+            margin: 32px 0;
+            text-align: center;
+        }
+        
+        .contact-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+        }
+        
+        .contact-card a {
+            font-size: 1.1rem;
+        }
+        
+        .faq-item {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+        }
+        
+        .faq-item h3 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            color: var(--text);
+        }
+        
+        .faq-item p {
+            margin-bottom: 0;
+        }
+        
+        footer {
+            padding: 48px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+        
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+        
+        .copyright {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.4);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="/" class="logo">Nurikabe Islands</a>
+            <ul class="nav-links">
+                <li><a href="privacy.html">Privacy</a></li>
+                <li><a href="support.html">Support</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main class="container">
+        <h1>Support</h1>
+        <p class="intro">Need help with Nurikabe Islands? We're here to assist you.</p>
+        
+        <div class="contact-card">
+            <h3>Contact Us</h3>
+            <p>For questions, feedback, or bug reports:</p>
+            <a href="mailto:support@nurikabeislands.com">support@nurikabeislands.com</a>
+        </div>
+        
+        <h2>Frequently Asked Questions</h2>
+        
+        <div class="faq-item">
+            <h3>How do I play Nurikabe?</h3>
+            <p>The goal is to fill cells to create a continuous "sea" while leaving numbered islands. Each number tells you how many white cells that island contains. Islands cannot touch diagonally, and the sea cannot contain any 2×2 filled areas.</p>
+        </div>
+        
+        <div class="faq-item">
+            <h3>How do I mark a cell?</h3>
+            <p>Tap once to fill a cell (sea). Tap again to mark it with a dot (confirmed island). Tap a third time to clear it.</p>
+        </div>
+        
+        <div class="faq-item">
+            <h3>What does the hint button do?</h3>
+            <p>The hint button reveals one cell that you can logically deduce from the current state of the puzzle. It won't give away random cells—only ones you could figure out yourself.</p>
+        </div>
+        
+        <div class="faq-item">
+            <h3>How do I unlock more levels?</h3>
+            <p>Complete levels to unlock the next ones. You can also replay any completed level at any time.</p>
+        </div>
+        
+        <div class="faq-item">
+            <h3>Is my progress saved?</h3>
+            <p>Yes! Your progress is automatically saved on your device. If you're working on a puzzle and leave the app, you can continue where you left off.</p>
+        </div>
+        
+        <div class="faq-item">
+            <h3>How do I change the color theme?</h3>
+            <p>Go to Settings from the main menu and tap on any color swatch to change the app's theme.</p>
+        </div>
+        
+        <div class="faq-item">
+            <h3>The app isn't working properly. What should I do?</h3>
+            <p>Try closing and reopening the app. If the issue persists, please contact us at <a href="mailto:support@nurikabeislands.com">support@nurikabeislands.com</a> with details about your device and the problem you're experiencing.</p>
+        </div>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="/">Home</a>
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="support.html">Support</a>
+            </div>
+            <p class="copyright">© 2026 Nurikabe Islands. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
