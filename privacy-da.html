@@ -9,42 +9,122 @@
     <link rel="apple-touch-icon" href="icon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
-        :root { --primary: #F189B8; --primary-dark: #d4709f; --bg: #0f0f0f; --text: #ffffff; --text-muted: rgba(255, 255, 255, 0.7); }
+        :root {
+            --pink: #E888AB;
+            --pink-light: #F2A7C3;
+            --white: #ffffff;
+            --text-pink: #D4799B;
+            --text-dark: #2c2c2c;
+            --text-muted: #666;
+        }
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; line-height: 1.7; }
-        .container { max-width: 700px; margin: 0 auto; padding: 0 24px; }
-        header { padding: 24px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
-        nav { display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 1.25rem; font-weight: 700; color: var(--primary); text-decoration: none; }
-        .nav-links { display: flex; gap: 32px; list-style: none; }
-        .nav-links { align-items: center; }
-        .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.95rem; transition: color 0.2s; }
-        .nav-links a:hover { color: var(--text); }
-        .lang-select { background: rgba(255,255,255,0.1); color: var(--text); border: 1px solid rgba(255,255,255,0.2); border-radius: 6px; padding: 6px 10px; font-size: 0.9rem; font-family: inherit; cursor: pointer; }
-        .lang-select:hover, .lang-select:focus { border-color: var(--primary); outline: none; }
-        main { padding: 60px 0 100px; }
-        h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 8px; color: var(--primary); }
-        .last-updated { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 48px; }
-        h2 { font-size: 1.4rem; margin-top: 40px; margin-bottom: 16px; color: var(--text); }
-        p, ul { color: var(--text-muted); margin-bottom: 16px; }
-        ul { margin-left: 24px; }
-        li { margin-bottom: 8px; }
-        a { color: var(--primary); }
-        footer { padding: 48px 0; border-top: 1px solid rgba(255, 255, 255, 0.1); text-align: center; }
-        .footer-links { display: flex; justify-content: center; gap: 32px; margin-bottom: 24px; flex-wrap: wrap; }
-        .footer-links a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
-        .footer-links a:hover { color: var(--primary); }
-        .copyright { font-size: 0.85rem; color: rgba(255, 255, 255, 0.4); }
+
+        body {
+            font-family: 'Nunito', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--pink);
+            color: var(--text-dark);
+            min-height: 100vh;
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        .bg-decor {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .bg-decor span {
+            position: absolute;
+            font-weight: 800;
+            color: var(--pink-light);
+            opacity: 0.5;
+        }
+
+        .bg-decor .n1  { top: 8%;   left: 4%;   font-size: 1.6rem; transform: rotate(-8deg); }
+        .bg-decor .n2  { top: 22%;  right: 6%;  font-size: 1.2rem; transform: rotate(12deg); }
+        .bg-decor .n3  { top: 40%;  left: 7%;   font-size: 2rem;   transform: rotate(-3deg); }
+        .bg-decor .n4  { top: 55%;  right: 10%; font-size: 1.4rem; transform: rotate(6deg); }
+        .bg-decor .n5  { top: 70%;  left: 3%;   font-size: 1.8rem; transform: rotate(-15deg); }
+        .bg-decor .n6  { top: 85%;  right: 5%;  font-size: 1.3rem; transform: rotate(20deg); }
+
+        .page { position: relative; z-index: 1; }
+
+        .container { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+
+        nav { padding: 20px 0; }
+        nav .container { display: flex; justify-content: space-between; align-items: center; }
+
+        .nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+        .nav-brand img { width: 32px; height: 32px; }
+        .nav-brand span { font-weight: 700; font-size: 1.1rem; color: var(--white); }
+
+        .nav-links { display: flex; gap: 28px; list-style: none; align-items: center; }
+        .nav-links a { color: var(--white); text-decoration: none; font-weight: 600; font-size: 0.95rem; opacity: 0.85; transition: opacity 0.2s; }
+        .nav-links a:hover { opacity: 1; }
+
+        .lang-select {
+            background: rgba(255, 255, 255, 0.2);
+            color: var(--white);
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            border-radius: 8px;
+            padding: 6px 10px;
+            font-size: 0.85rem;
+            font-family: inherit;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        .lang-select:hover, .lang-select:focus { background: rgba(255, 255, 255, 0.3); outline: none; }
+        .lang-select option { color: var(--text-dark); background: var(--white); }
+
+        .page-header { text-align: center; padding: 48px 0 40px; }
+        .page-header h1 { font-size: 2.2rem; font-weight: 800; color: var(--white); margin-bottom: 8px; }
+        .page-header .last-updated { font-size: 0.9rem; color: var(--white); opacity: 0.75; }
+
+        .content-wave { display: block; width: 100%; height: 40px; margin-bottom: -1px; }
+        .content-bg { background: var(--white); padding: 48px 0 64px; }
+        .content-wave-bottom { display: block; width: 100%; height: 40px; margin-top: -1px; }
+
+        .content-bg h2 { font-size: 1.3rem; font-weight: 700; color: var(--text-pink); margin-top: 36px; margin-bottom: 12px; }
+        .content-bg h2:first-child { margin-top: 0; }
+        .content-bg p { color: var(--text-muted); margin-bottom: 14px; font-size: 0.95rem; }
+        .content-bg ul { color: var(--text-muted); margin-left: 20px; margin-bottom: 14px; font-size: 0.95rem; }
+        .content-bg li { margin-bottom: 6px; }
+        .content-bg a { color: var(--text-pink); }
+
+        footer { padding: 40px 0 48px; text-align: center; }
+        .footer-links { display: flex; justify-content: center; gap: 28px; margin-bottom: 16px; flex-wrap: wrap; }
+        .footer-links a { color: var(--white); text-decoration: none; font-size: 0.9rem; font-weight: 600; opacity: 0.8; transition: opacity 0.2s; }
+        .footer-links a:hover { opacity: 1; }
+        .copyright { font-size: 0.8rem; color: var(--white); opacity: 0.6; }
+
+        @media (max-width: 640px) {
+            .page-header h1 { font-size: 1.8rem; }
+            .nav-links { gap: 16px; }
+        }
     </style>
 </head>
 <body>
-    <header>
-        <nav class="container">
-            <a href="/" class="logo">Nurikabe Islands</a>
+
+<div class="bg-decor" aria-hidden="true">
+    <span class="n1">5</span><span class="n2">7</span><span class="n3">2</span>
+    <span class="n4">6</span><span class="n5">1</span><span class="n6">4</span>
+</div>
+
+<div class="page">
+    <nav>
+        <div class="container">
+            <a href="/" class="nav-brand">
+                <img src="logo.png" alt="Nurikabe Islands">
+                <span>Nurikabe Islands</span>
+            </a>
             <ul class="nav-links">
-                <li><a href="privacy.html">Privatliv</a></li>
+                <li><a href="privacy-da.html">Privatliv</a></li>
                 <li><a href="support.html">Support</a></li>
                 <li>
                     <select id="lang-select" class="lang-select" aria-label="Language">
@@ -81,54 +161,77 @@
                     </select>
                 </li>
             </ul>
-        </nav>
-    </header>
-    <main class="container">
+        </div>
+    </nav>
+
+    <div class="page-header container">
         <h1>Privatlivspolitik</h1>
         <p class="last-updated">Sidst opdateret: 11. januar 2026</p>
-        <p>Udvikleren ("vi", "vores") driver Nurikabe Islands mobilappen ("appen"). Denne side informerer dig om vores politikker vedrørende indsamling, brug og offentliggørelse af personoplysninger, når du bruger vores app.</p>
-        <h2>Oplysninger vi indsamler</h2>
-        <p>Nurikabe Islands er designet med dit privatliv i tankerne. Vi indsamler minimale oplysninger:</p>
-        <ul>
-            <li><strong>Spilfremskridt:</strong> Dine puslespilsfremskridt og indstillinger gemmes kun lokalt på din enhed. Vi har ikke adgang til disse data.</li>
-            <li><strong>Analyser:</strong> Vi kan indsamle anonyme brugsstatistikker for at forbedre appen. Disse data kan ikke bruges til at identificere dig.</li>
-        </ul>
-        <h2>Reklame</h2>
-        <p>Vores app bruger Google AdMob til at vise reklamer. Google kan indsamle og bruge data til personlig reklame. Læs mere: <a href="https://policies.google.com/privacy" target="_blank">Googles privatlivspolitik</a>.</p>
-        <p>Du kan fravælge personlig reklame i enhedsindstillinger eller i appen.</p>
-        <h2>Transparens om sporing</h2>
-        <p>På iOS 14.5 og nyere anmoder vi om din tilladelse før sporing af din aktivitet til reklameformål. Du kan ændre dette under Indstillinger.</p>
-        <h2>Datalagring</h2>
-        <p>Alle spildata gemmes lokalt på din enhed. Vi indsamler, gemmer eller overfører ikke dine spildata til nogen servere.</p>
-        <h2>Børns privatliv</h2>
-        <p>Vores app indsamler ikke bevidst personoplysninger fra børn under 13. Appen er egnet til alle aldre og kræver ikke personoplysninger.</p>
-        <h2>Tredjepartstjenester</h2>
-        <p>Vores app kan indeholde links til tredjepartstjenester. Vi er ikke ansvarlige for deres privatlivspraksis. Læs deres politikker.</p>
-        <h2>Ændringer af denne politik</h2>
-        <p>Vi kan opdatere vores privatlivspolitik. Vi underretter dig om ændringer ved at offentliggøre den nye politik på denne side og opdatere "Sidst opdateret".</p>
-        <h2>Kontakt os</h2>
-        <p>Har du spørgsmål til denne privatlivspolitik:</p>
-        <p><a href="mailto:support@nurikabeislands.com">support@nurikabeislands.com</a></p>
-    </main>
+    </div>
+
+    <svg class="content-wave" viewBox="0 0 1440 40" preserveAspectRatio="none">
+        <path d="M0,24 C240,40 480,8 720,24 C960,40 1200,8 1440,24 L1440,40 L0,40 Z" fill="white"/>
+    </svg>
+
+    <div class="content-bg">
+        <main class="container">
+            <p>Udvikleren ("vi", "vores") driver Nurikabe Islands mobilappen ("appen"). Denne side informerer dig om vores politikker vedrørende indsamling, brug og offentliggørelse af personoplysninger, når du bruger vores app.</p>
+
+            <h2>Oplysninger vi indsamler</h2>
+            <p>Nurikabe Islands er designet med dit privatliv i tankerne. Vi indsamler minimale oplysninger:</p>
+            <ul>
+                <li><strong>Spilfremskridt: Dine puslespilsfremskridt og indstillinger gemmes kun lokalt på din enhed. Vi har ikke adgang til disse data. Når du er logget ind på Game Center (iOS) eller Play Games (Android), synkroniseres fremskridt også til deres sky, så du kan gendanne det på en ny enhed. Vi har ikke adgang til disse data.</strong></li>
+                <li><strong>Analyser: Vi kan indsamle anonyme brugsstatistikker for at forbedre appen. Disse data kan ikke bruges til at identificere dig.</strong></li>
+            </ul>
+
+            <h2>Reklame</h2>
+            <p>Vores app bruger Google AdMob til at vise reklamer. Google kan indsamle og bruge data til personlig reklame. Læs mere: <a href="https://policies.google.com/privacy" target="_blank">Googles privatlivspolitik</a>.</p>
+            <p>Du kan fravælge personlig reklame i enhedsindstillinger eller i appen.</p>
+
+            <h2>Transparens om sporing</h2>
+            <p>På iOS 14.5 og nyere anmoder vi om din tilladelse før sporing af din aktivitet til reklameformål. Du kan ændre dette under Indstillinger.</p>
+
+            <h2>Datalagring</h2>
+            <p>Spildata (fremskridt, indstillinger, præferencer) gemmes på din enhed. Når du er logget ind på Game Center (iOS) eller Play Games (Android), sikkerhedskopieres disse data også til deres cloudtjenester, så du kan gendanne dem på en anden enhed. Vi indsamler, gemmer eller overfører ikke dine spildata til vores egne servere.</p>
+
+            <h2>Børns privatliv</h2>
+            <p>Vores app indsamler ikke bevidst personoplysninger fra børn under 13. Appen er egnet til alle aldre og kræver ikke personoplysninger.</p>
+
+            <h2>Tredjepartstjenester</h2>
+            <p>Vores app kan indeholde links til tredjepartstjenester. Vi er ikke ansvarlige for deres privatlivspraksis. Læs deres politikker.</p>
+
+            <h2>Ændringer af denne politik</h2>
+            <p>Vi kan opdatere vores privatlivspolitik. Vi underretter dig om ændringer ved at offentliggøre den nye politik på denne side og opdatere "Sidst opdateret".</p>
+
+            <h2>Kontakt os</h2>
+            <p>Har du spørgsmål til denne privatlivspolitik:</p>
+            <p><a href="mailto:support@nurikabeislands.com">support@nurikabeislands.com</a></p>
+        </main>
+    </div>
+
+    <svg class="content-wave-bottom" viewBox="0 0 1440 40" preserveAspectRatio="none">
+        <path d="M0,16 C240,0 480,32 720,16 C960,0 1200,32 1440,16 L1440,0 L0,0 Z" fill="white"/>
+    </svg>
+
     <footer>
         <div class="container">
             <div class="footer-links">
                 <a href="/">Hjem</a>
-                <a href="privacy.html">Privatlivspolitik</a>
+                <a href="privacy-da.html">Privatlivspolitik</a>
                 <a href="support.html">Support</a>
             </div>
             <p class="copyright">© 2026 Nurikabe Islands. Alle rettigheder forbeholdes.</p>
         </div>
     </footer>
-    <script>
-    (function() {
-        var sel = document.getElementById('lang-select');
-        if (!sel) return;
-        var current = (location.pathname.split('/').pop() || '').replace('privacy-', '').replace('.html', '') || 'en';
-        var file = current === 'en' ? 'privacy-en.html' : 'privacy-' + current + '.html';
-        if (sel.querySelector('option[value="' + file + '"]')) sel.value = file;
-        sel.addEventListener('change', function() { location.href = this.value; });
-    })();
-    </script>
+</div>
+
+<script>
+(function() {
+    var sel = document.getElementById('lang-select');
+    if (!sel) return;
+    sel.value = 'privacy-da.html';
+    sel.addEventListener('change', function() { location.href = this.value; });
+})();
+</script>
 </body>
 </html>

@@ -3,263 +3,511 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Nurikabe Islands - A beautiful logic puzzle game for iOS">
+    <meta name="description" content="Nurikabe Islands - A relaxing logic puzzle game for iOS and Android. Solve grids by building islands and filling seas.">
     <meta name="apple-itunes-app" content="app-id=6757597395">
     <title>Nurikabe Islands - Logic Puzzle Game</title>
     <link rel="icon" type="image/png" href="icon.png">
     <link rel="apple-touch-icon" href="icon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #F189B8;
-            --primary-dark: #d4709f;
-            --bg: #0f0f0f;
-            --text: #ffffff;
-            --text-muted: rgba(255, 255, 255, 0.7);
+            --pink: #E888AB;
+            --pink-light: #F2A7C3;
+            --pink-dark: #D47A9C;
+            --white: #ffffff;
+            --text-pink: #D4799B;
+            --text-dark: #2c2c2c;
+            --card-shadow: rgba(0, 0, 0, 0.06);
         }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
         body {
-            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: var(--bg);
-            color: var(--text);
+            font-family: 'Nunito', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--pink);
+            color: var(--text-dark);
             min-height: 100vh;
             line-height: 1.6;
+            overflow-x: hidden;
         }
-        
+
+        /* Scattered background numbers like the game */
+        .bg-decor {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .bg-decor span {
+            position: absolute;
+            font-weight: 800;
+            color: var(--pink-light);
+            opacity: 0.5;
+        }
+
+        .bg-decor .n1  { top: 8%;   left: 4%;   font-size: 1.6rem; transform: rotate(-8deg); }
+        .bg-decor .n2  { top: 18%;  right: 6%;  font-size: 1.2rem; transform: rotate(12deg); }
+        .bg-decor .n3  { top: 32%;  left: 9%;   font-size: 2rem;   transform: rotate(-3deg); }
+        .bg-decor .n4  { top: 44%;  right: 12%; font-size: 1.4rem; transform: rotate(6deg); }
+        .bg-decor .n5  { top: 55%;  left: 3%;   font-size: 1.8rem; transform: rotate(-15deg); }
+        .bg-decor .n6  { top: 65%;  right: 5%;  font-size: 1.3rem; transform: rotate(20deg); }
+        .bg-decor .n7  { top: 78%;  left: 14%;  font-size: 1.5rem; transform: rotate(4deg); }
+        .bg-decor .n8  { top: 88%;  right: 9%;  font-size: 1.7rem; transform: rotate(-10deg); }
+        .bg-decor .n9  { top: 12%;  left: 45%;  font-size: 1.1rem; transform: rotate(8deg); }
+        .bg-decor .n10 { top: 72%;  left: 40%;  font-size: 1.3rem; transform: rotate(-5deg); }
+        .bg-decor .n11 { top: 38%;  right: 35%; font-size: 1.0rem; transform: rotate(14deg); }
+        .bg-decor .n12 { top: 92%;  left: 50%;  font-size: 1.6rem; transform: rotate(-12deg); }
+
+        .page { position: relative; z-index: 1; }
+
         .container {
-            max-width: 800px;
+            max-width: 860px;
             margin: 0 auto;
             padding: 0 24px;
         }
-        
-        /* Header */
-        header {
-            padding: 24px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
+
+        /* ---- NAV ---- */
         nav {
+            padding: 20px 0;
+        }
+
+        nav .container {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-        
-        .logo {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--primary);
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
             text-decoration: none;
         }
-        
+
+        .nav-brand img {
+            width: 32px;
+            height: 32px;
+        }
+
+        .nav-brand span {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--white);
+        }
+
         .nav-links {
             display: flex;
-            gap: 32px;
+            gap: 28px;
             list-style: none;
         }
-        
+
         .nav-links a {
-            color: var(--text-muted);
+            color: var(--white);
             text-decoration: none;
+            font-weight: 600;
             font-size: 0.95rem;
-            transition: color 0.2s;
+            opacity: 0.85;
+            transition: opacity 0.2s;
         }
-        
-        .nav-links a:hover {
-            color: var(--text);
-        }
-        
-        /* Hero */
+
+        .nav-links a:hover { opacity: 1; }
+
+        /* ---- HERO ---- */
         .hero {
-            padding: 100px 0;
             text-align: center;
+            padding: 60px 0 80px;
         }
-        
-        .app-icon {
-            width: 120px;
-            height: 120px;
-            border-radius: 28px;
-            margin-bottom: 32px;
-            box-shadow: 0 20px 60px rgba(241, 137, 184, 0.3);
+
+        .hero-logo {
+            width: 72px;
+            height: 72px;
+            margin-bottom: 12px;
         }
-        
-        h1 {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 16px;
-            background: linear-gradient(135deg, var(--primary) 0%, #ffffff 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: var(--white);
+            line-height: 1.1;
+            margin-bottom: 2px;
         }
-        
-        .tagline {
-            font-size: 1.25rem;
-            color: var(--text-muted);
-            margin-bottom: 40px;
-            max-width: 500px;
-            margin-left: auto;
-            margin-right: auto;
+
+        .hero .subtitle {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--white);
+            opacity: 0.85;
+            margin-bottom: 24px;
         }
-        
-        .app-store-badge {
-            height: 54px;
-            transition: transform 0.2s, opacity 0.2s;
-        }
-        
-        .app-store-badge:hover {
-            transform: scale(1.05);
+
+        .hero .tagline {
+            font-size: 1.1rem;
+            color: var(--white);
             opacity: 0.9;
+            max-width: 480px;
+            margin: 0 auto 40px;
         }
-        
-        /* Features */
-        .features {
-            padding: 80px 0;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+
+        .store-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+            align-items: center;
         }
-        
-        .features h2 {
+
+        .store-badges a {
+            display: block;
+            transition: transform 0.2s;
+        }
+
+        .store-badges a:hover {
+            transform: translateY(-2px);
+        }
+
+        .store-badges .badge-apple img {
+            height: 48px;
+        }
+
+        .store-badges .badge-google img {
+            height: 70px;
+            margin: -10px 0;
+        }
+
+        /* ---- RULES (How to Play) ---- */
+        .rules-section {
+            position: relative;
+        }
+
+        .rules-wave {
+            display: block;
+            width: 100%;
+            height: 40px;
+            margin-bottom: -1px;
+        }
+
+        .rules-bg {
+            background: var(--white);
+            padding: 48px 0 56px;
+        }
+
+        .rules-wave-bottom {
+            display: block;
+            width: 100%;
+            height: 40px;
+            margin-top: -1px;
+        }
+
+        .rules-bg h2 {
             text-align: center;
-            font-size: 2rem;
-            margin-bottom: 48px;
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--text-pink);
+            margin-bottom: 28px;
         }
-        
+
+        .rules-list {
+            list-style: none;
+            display: grid;
+            gap: 16px;
+            max-width: 520px;
+            margin: 0 auto;
+        }
+
+        .rules-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            font-size: 1rem;
+            color: var(--text-dark);
+            line-height: 1.5;
+        }
+
+        .rule-icon {
+            flex-shrink: 0;
+            width: 32px;
+            height: 32px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 0.85rem;
+            color: var(--white);
+            background: var(--pink);
+        }
+
+        /* ---- FEATURES ---- */
+        .features {
+            padding: 0 0 80px;
+        }
+
+        .features-heading {
+            text-align: center;
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--white);
+            margin-bottom: 32px;
+        }
+
         .feature-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 32px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
         }
-        
-        .feature {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 16px;
-            padding: 28px;
+
+        .feature-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 32px 24px;
             text-align: center;
+            box-shadow: 0 4px 24px var(--card-shadow);
+            transition: transform 0.2s;
         }
-        
-        .feature-icon {
-            font-size: 2.5rem;
+
+        .feature-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .feature-card .icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            background: var(--pink);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             margin-bottom: 16px;
         }
-        
-        .feature h3 {
-            font-size: 1.1rem;
-            margin-bottom: 8px;
+
+        .feature-card .icon svg {
+            width: 24px;
+            height: 24px;
+            fill: none;
+            stroke: var(--white);
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
         }
-        
-        .feature p {
+
+        .feature-card .icon svg.icon-fill {
+            fill: var(--white);
+            stroke: none;
+        }
+
+        .feature-card h3 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--text-pink);
+            margin-bottom: 6px;
+        }
+
+        .feature-card p {
             font-size: 0.9rem;
-            color: var(--text-muted);
+            color: #777;
+            line-height: 1.5;
         }
-        
-        /* Footer */
+
+        /* ---- FOOTER ---- */
         footer {
-            padding: 48px 0;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 40px 0 48px;
             text-align: center;
         }
-        
+
         .footer-links {
             display: flex;
             justify-content: center;
-            gap: 32px;
-            margin-bottom: 24px;
+            gap: 28px;
+            margin-bottom: 16px;
             flex-wrap: wrap;
         }
-        
+
         .footer-links a {
-            color: var(--text-muted);
+            color: var(--white);
             text-decoration: none;
             font-size: 0.9rem;
-            transition: color 0.2s;
+            font-weight: 600;
+            opacity: 0.8;
+            transition: opacity 0.2s;
         }
-        
-        .footer-links a:hover {
-            color: var(--primary);
-        }
-        
+
+        .footer-links a:hover { opacity: 1; }
+
         .copyright {
-            font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.8rem;
+            color: var(--white);
+            opacity: 0.6;
         }
-        
-        @media (max-width: 600px) {
-            h1 {
-                font-size: 2rem;
+
+        /* ---- SAIL ANIMATION ---- */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        .hero-logo {
+            animation: float 4s ease-in-out infinite;
+        }
+
+        /* ---- RESPONSIVE ---- */
+        @media (max-width: 640px) {
+            .hero { padding: 40px 0 60px; }
+
+            .hero h1 { font-size: 2.1rem; }
+            .hero .subtitle { font-size: 1rem; }
+            .hero .tagline { font-size: 0.95rem; }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
             }
-            
-            .tagline {
-                font-size: 1rem;
+
+            .rules-card {
+                padding: 36px 24px;
             }
-            
-            .nav-links {
-                gap: 16px;
+
+            .store-badges {
+                flex-direction: column;
             }
-            
-            .hero {
-                padding: 60px 0;
-            }
+
+            .nav-links { gap: 16px; }
         }
     </style>
 </head>
 <body>
-    <header>
-        <nav class="container">
-            <a href="/" class="logo">Nurikabe Islands</a>
+
+<div class="bg-decor" aria-hidden="true">
+    <span class="n1">5</span>
+    <span class="n2">7</span>
+    <span class="n3">2</span>
+    <span class="n4">6</span>
+    <span class="n5">1</span>
+    <span class="n6">4</span>
+    <span class="n7">3</span>
+    <span class="n8">8</span>
+    <span class="n9">10</span>
+    <span class="n10">5</span>
+    <span class="n11">3</span>
+    <span class="n12">4</span>
+</div>
+
+<div class="page">
+
+    <nav>
+        <div class="container">
+            <a href="/" class="nav-brand">
+                <img src="logo.png" alt="Nurikabe Islands">
+                <span>Nurikabe Islands</span>
+            </a>
             <ul class="nav-links">
                 <li><a href="privacy.html">Privacy</a></li>
                 <li><a href="support.html">Support</a></li>
             </ul>
-        </nav>
-    </header>
-    
+        </div>
+    </nav>
+
     <main>
         <section class="hero container">
-            <img src="icon.png" alt="Nurikabe Islands App Icon" class="app-icon">
-            <h1>Nurikabe Islands</h1>
-            <p class="tagline">A beautiful logic puzzle game. Fill the seas, connect the islands, and master the Japanese puzzle.</p>
-            <a href="https://apps.apple.com/app/id6757597395">
-                <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" 
-                     alt="Download on the App Store" 
-                     class="app-store-badge">
-            </a>
+            <img src="logo.png" alt="" class="hero-logo">
+            <h1>Nurikabe</h1>
+            <p class="subtitle">Logic Islands</p>
+            <p class="tagline">A relaxing Japanese number-logic puzzle. Build white islands, fill the seas, and find the one true solution.</p>
+            <div class="store-badges">
+                <a href="https://apps.apple.com/app/id6757597395" class="badge-apple">
+                    <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
+                         alt="Download on the App Store">
+                </a>
+                <a href="https://play.google.com/store/apps/details?id=com.nurikabe.android" class="badge-google">
+                    <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
+                         alt="Get it on Google Play">
+                </a>
+            </div>
         </section>
-        
+
+        <section class="rules-section">
+            <svg class="rules-wave" viewBox="0 0 1440 40" preserveAspectRatio="none">
+                <path d="M0,24 C240,40 480,8 720,24 C960,40 1200,8 1440,24 L1440,40 L0,40 Z" fill="white"/>
+            </svg>
+            <div class="rules-bg">
+                <div class="container">
+                    <h2>How to Play</h2>
+                    <ul class="rules-list">
+                        <li>
+                            <div class="rule-icon">1</div>
+                            <span>Every number is an island. Each island contains exactly that many cells.</span>
+                        </li>
+                        <li>
+                            <div class="rule-icon">2</div>
+                            <span>Islands cannot touch each other, not even diagonally.</span>
+                        </li>
+                        <li>
+                            <div class="rule-icon">3</div>
+                            <span>All sea cells must connect into one continuous area.</span>
+                        </li>
+                        <li>
+                            <div class="rule-icon">4</div>
+                            <span>No 2&times;2 block of sea is allowed.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <svg class="rules-wave-bottom" viewBox="0 0 1440 40" preserveAspectRatio="none">
+                <path d="M0,16 C240,0 480,32 720,16 C960,0 1200,32 1440,16 L1440,0 L0,0 Z" fill="white"/>
+            </svg>
+        </section>
+
         <section class="features container">
-            <h2>Features</h2>
+            <h2 class="features-heading">What You Get</h2>
             <div class="feature-grid">
-                <div class="feature">
-                    <div class="feature-icon">🧩</div>
+                <div class="feature-card">
+                    <div class="icon">
+                        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+                    </div>
                     <h3>Hundreds of Puzzles</h3>
-                    <p>From easy 5×5 grids to challenging 15×15 masterpieces</p>
+                    <p>5&times;5, 8&times;10, and 10&times;15 boards with more available in the shop</p>
                 </div>
-                <div class="feature">
-                    <div class="feature-icon">🎨</div>
-                    <h3>Beautiful Themes</h3>
-                    <p>Choose from multiple color themes to match your style</p>
+                <div class="feature-card">
+                    <div class="icon">
+                        <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 10h18"/><circle cx="8" cy="15" r="1"/><circle cx="12" cy="15" r="1"/><circle cx="16" cy="15" r="1"/></svg>
+                    </div>
+                    <h3>Daily Challenge</h3>
+                    <p>Three new puzzles every day at noon. Complete all three to build your streak.</p>
                 </div>
-                <div class="feature">
-                    <div class="feature-icon">💡</div>
-                    <h3>Hints When Stuck</h3>
-                    <p>Get gentle nudges without spoiling the solution</p>
+                <div class="feature-card">
+                    <div class="icon">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3a4.5 4.5 0 0 0 0 9 4.5 4.5 0 0 1 0 9"/></svg>
+                    </div>
+                    <h3>Multiple Themes</h3>
+                    <p>Switch between color themes in settings to match your style</p>
                 </div>
-                <div class="feature">
-                    <div class="feature-icon">📱</div>
-                    <h3>Works Offline</h3>
-                    <p>Play anywhere, no internet connection required</p>
+                <div class="feature-card">
+                    <div class="icon">
+                        <svg viewBox="0 0 24 24"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
+                    </div>
+                    <h3>Achievements &amp; Leaderboards</h3>
+                    <p>Earn achievements for milestones and compete on global leaderboards</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">
+                        <svg class="icon-fill" viewBox="0 0 24 24"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
+                    </div>
+                    <h3>Cloud Sync</h3>
+                    <p>Sign in with Game Center or Play Games to back up progress and restore it on any device</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">
+                        <svg class="icon-fill" viewBox="0 0 24 24"><path d="M20 12v10H4V12"/><rect x="2" y="7" width="20" height="5" rx="1"/><path d="M12 22V7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>
+                    </div>
+                    <h3>Free to Play</h3>
+                    <p>Download and enjoy the full game for free. Optional hints and unlocks via rewarded ads</p>
                 </div>
             </div>
         </section>
     </main>
-    
+
     <footer>
         <div class="container">
             <div class="footer-links">
@@ -267,8 +515,11 @@
                 <a href="support.html">Support</a>
                 <a href="mailto:support@nurikabeislands.com">Contact</a>
             </div>
-            <p class="copyright">© 2026 Nurikabe Islands. All rights reserved.</p>
+            <p class="copyright">&copy; 2026 Nurikabe Islands</p>
         </div>
     </footer>
+
+</div>
+
 </body>
 </html>

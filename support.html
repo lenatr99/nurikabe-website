@@ -3,236 +3,404 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Support for Nurikabe Islands">
+    <meta name="description" content="Support and FAQ for Nurikabe Islands - logic puzzle game for iOS and Android">
     <title>Support - Nurikabe Islands</title>
     <link rel="icon" type="image/png" href="icon.png">
     <link rel="apple-touch-icon" href="icon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #F189B8;
-            --primary-dark: #d4709f;
-            --bg: #0f0f0f;
-            --text: #ffffff;
-            --text-muted: rgba(255, 255, 255, 0.7);
+            --pink: #E888AB;
+            --pink-light: #F2A7C3;
+            --white: #ffffff;
+            --text-pink: #D4799B;
+            --text-dark: #2c2c2c;
+            --text-muted: #666;
+            --card-shadow: rgba(0, 0, 0, 0.06);
         }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
         body {
-            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: var(--bg);
-            color: var(--text);
+            font-family: 'Nunito', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--pink);
+            color: var(--text-dark);
             min-height: 100vh;
             line-height: 1.7;
+            overflow-x: hidden;
         }
-        
+
+        .bg-decor {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .bg-decor span {
+            position: absolute;
+            font-weight: 800;
+            color: var(--pink-light);
+            opacity: 0.5;
+        }
+
+        .bg-decor .n1  { top: 8%;   left: 4%;   font-size: 1.6rem; transform: rotate(-8deg); }
+        .bg-decor .n2  { top: 22%;  right: 6%;  font-size: 1.2rem; transform: rotate(12deg); }
+        .bg-decor .n3  { top: 40%;  left: 7%;   font-size: 2rem;   transform: rotate(-3deg); }
+        .bg-decor .n4  { top: 55%;  right: 10%; font-size: 1.4rem; transform: rotate(6deg); }
+        .bg-decor .n5  { top: 70%;  left: 3%;   font-size: 1.8rem; transform: rotate(-15deg); }
+        .bg-decor .n6  { top: 85%;  right: 5%;  font-size: 1.3rem; transform: rotate(20deg); }
+
+        .page { position: relative; z-index: 1; }
+
         .container {
-            max-width: 700px;
+            max-width: 760px;
             margin: 0 auto;
             padding: 0 24px;
         }
-        
-        header {
-            padding: 24px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
+
+        /* ---- NAV ---- */
         nav {
+            padding: 20px 0;
+        }
+
+        nav .container {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-        
-        .logo {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--primary);
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
             text-decoration: none;
         }
-        
+
+        .nav-brand img {
+            width: 32px;
+            height: 32px;
+        }
+
+        .nav-brand span {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--white);
+        }
+
         .nav-links {
             display: flex;
-            gap: 32px;
+            gap: 28px;
             list-style: none;
         }
-        
+
         .nav-links a {
-            color: var(--text-muted);
+            color: var(--white);
             text-decoration: none;
+            font-weight: 600;
             font-size: 0.95rem;
-            transition: color 0.2s;
+            opacity: 0.85;
+            transition: opacity 0.2s;
         }
-        
-        .nav-links a:hover {
-            color: var(--text);
+
+        .nav-links a:hover { opacity: 1; }
+
+        /* ---- PAGE HEADER ---- */
+        .page-header {
+            text-align: center;
+            padding: 48px 0 40px;
         }
-        
-        main {
-            padding: 60px 0 100px;
+
+        .page-header h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--white);
+            margin-bottom: 8px;
         }
-        
-        h1 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 16px;
-            color: var(--primary);
+
+        .page-header p {
+            font-size: 1.05rem;
+            color: var(--white);
+            opacity: 0.9;
         }
-        
-        .intro {
-            font-size: 1.1rem;
-            color: var(--text-muted);
+
+        /* ---- CONTENT AREA (white) ---- */
+        .content-wave {
+            display: block;
+            width: 100%;
+            height: 40px;
+            margin-bottom: -1px;
+        }
+
+        .content-bg {
+            background: var(--white);
+            padding: 48px 0 64px;
+        }
+
+        .content-wave-bottom {
+            display: block;
+            width: 100%;
+            height: 40px;
+            margin-top: -1px;
+        }
+
+        /* ---- CONTACT CARD ---- */
+        .contact-card {
+            background: #FDF2F6;
+            border-radius: 20px;
+            padding: 32px;
+            text-align: center;
             margin-bottom: 48px;
         }
-        
-        h2 {
-            font-size: 1.4rem;
-            margin-top: 40px;
-            margin-bottom: 16px;
-            color: var(--text);
-        }
-        
-        p {
-            color: var(--text-muted);
-            margin-bottom: 16px;
-        }
-        
-        a {
-            color: var(--primary);
-        }
-        
-        .contact-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-            padding: 32px;
-            margin: 32px 0;
-            text-align: center;
-        }
-        
+
         .contact-card h3 {
-            font-size: 1.2rem;
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--text-pink);
+            margin-bottom: 8px;
+        }
+
+        .contact-card p {
+            color: var(--text-muted);
             margin-bottom: 12px;
         }
-        
+
         .contact-card a {
-            font-size: 1.1rem;
+            color: var(--text-pink);
+            font-weight: 700;
+            font-size: 1.05rem;
+            text-decoration: none;
         }
-        
-        .faq-item {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 12px;
-            padding: 24px;
+
+        .contact-card a:hover {
+            text-decoration: underline;
+        }
+
+        /* ---- FAQ ---- */
+        .faq-heading {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--text-pink);
+            margin-bottom: 24px;
+        }
+
+        .faq-group-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-pink);
+            margin-top: 32px;
             margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #F5D5E3;
         }
-        
-        .faq-item h3 {
-            font-size: 1.1rem;
+
+        .faq-group-title:first-of-type {
+            margin-top: 0;
+        }
+
+        .faq-item {
+            background: #FAFAFA;
+            border-radius: 14px;
+            padding: 20px 24px;
             margin-bottom: 12px;
-            color: var(--text);
         }
-        
+
+        .faq-item h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+        }
+
         .faq-item p {
+            color: var(--text-muted);
             margin-bottom: 0;
+            font-size: 0.95rem;
+            line-height: 1.6;
         }
-        
+
+        .faq-item a {
+            color: var(--text-pink);
+        }
+
+        /* ---- FOOTER ---- */
         footer {
-            padding: 48px 0;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 40px 0 48px;
             text-align: center;
         }
-        
+
         .footer-links {
             display: flex;
             justify-content: center;
-            gap: 32px;
-            margin-bottom: 24px;
+            gap: 28px;
+            margin-bottom: 16px;
             flex-wrap: wrap;
         }
-        
+
         .footer-links a {
-            color: var(--text-muted);
+            color: var(--white);
             text-decoration: none;
             font-size: 0.9rem;
-            transition: color 0.2s;
+            font-weight: 600;
+            opacity: 0.8;
+            transition: opacity 0.2s;
         }
-        
-        .footer-links a:hover {
-            color: var(--primary);
-        }
-        
+
+        .footer-links a:hover { opacity: 1; }
+
         .copyright {
-            font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.8rem;
+            color: var(--white);
+            opacity: 0.6;
+        }
+
+        @media (max-width: 640px) {
+            .page-header h1 { font-size: 1.8rem; }
+            .nav-links { gap: 16px; }
         }
     </style>
 </head>
 <body>
-    <header>
-        <nav class="container">
-            <a href="/" class="logo">Nurikabe Islands</a>
+
+<div class="bg-decor" aria-hidden="true">
+    <span class="n1">5</span>
+    <span class="n2">7</span>
+    <span class="n3">2</span>
+    <span class="n4">6</span>
+    <span class="n5">1</span>
+    <span class="n6">4</span>
+</div>
+
+<div class="page">
+
+    <nav>
+        <div class="container">
+            <a href="/" class="nav-brand">
+                <img src="logo.png" alt="Nurikabe Islands">
+                <span>Nurikabe Islands</span>
+            </a>
             <ul class="nav-links">
                 <li><a href="privacy.html">Privacy</a></li>
                 <li><a href="support.html">Support</a></li>
             </ul>
-        </nav>
-    </header>
-    
-    <main class="container">
+        </div>
+    </nav>
+
+    <div class="page-header container">
         <h1>Support</h1>
-        <p class="intro">Need help with Nurikabe Islands? We're here to assist you.</p>
-        
-        <div class="contact-card">
-            <h3>Contact Us</h3>
-            <p>For questions, feedback, or bug reports:</p>
-            <a href="mailto:support@nurikabeislands.com">support@nurikabeislands.com</a>
-        </div>
-        
-        <h2>Frequently Asked Questions</h2>
-        
-        <div class="faq-item">
-            <h3>How do I play Nurikabe?</h3>
-            <p>The goal is to fill cells to create a continuous "sea" while leaving numbered islands. Each number tells you how many white cells that island contains. Islands cannot touch diagonally, and the sea cannot contain any 2×2 filled areas.</p>
-        </div>
-        
-        <div class="faq-item">
-            <h3>How do I mark a cell?</h3>
-            <p>Tap once to fill a cell (sea). Tap again to mark it with a dot (confirmed island). Tap a third time to clear it.</p>
-        </div>
-        
-        <div class="faq-item">
-            <h3>What does the hint button do?</h3>
-            <p>The hint button reveals one cell that you can logically deduce from the current state of the puzzle. It won't give away random cells—only ones you could figure out yourself.</p>
-        </div>
-        
-        <div class="faq-item">
-            <h3>How do I unlock more levels?</h3>
-            <p>Complete levels to unlock the next ones. You can also replay any completed level at any time.</p>
-        </div>
-        
-        <div class="faq-item">
-            <h3>Is my progress saved?</h3>
-            <p>Yes! Your progress is automatically saved on your device. If you're working on a puzzle and leave the app, you can continue where you left off.</p>
-        </div>
-        
-        <div class="faq-item">
-            <h3>How do I change the color theme?</h3>
-            <p>Go to Settings from the main menu and tap on any color swatch to change the app's theme.</p>
-        </div>
-        
-        <div class="faq-item">
-            <h3>The app isn't working properly. What should I do?</h3>
-            <p>Try closing and reopening the app. If the issue persists, please contact us at <a href="mailto:support@nurikabeislands.com">support@nurikabeislands.com</a> with details about your device and the problem you're experiencing.</p>
-        </div>
-    </main>
-    
+        <p>Need help with Nurikabe Islands? Find answers below or get in touch.</p>
+    </div>
+
+    <svg class="content-wave" viewBox="0 0 1440 40" preserveAspectRatio="none">
+        <path d="M0,24 C240,40 480,8 720,24 C960,40 1200,8 1440,24 L1440,40 L0,40 Z" fill="white"/>
+    </svg>
+
+    <div class="content-bg">
+        <main class="container">
+            <div class="contact-card">
+                <h3>Contact Us</h3>
+                <p>For questions, feedback, or bug reports:</p>
+                <a href="mailto:support@nurikabeislands.com">support@nurikabeislands.com</a>
+            </div>
+
+            <h2 class="faq-heading">Frequently Asked Questions</h2>
+
+            <h4 class="faq-group-title">Gameplay</h4>
+
+            <div class="faq-item">
+                <h3>How do I play Nurikabe?</h3>
+                <p>Fill cells to create a continuous "sea" while leaving numbered islands. Each number tells you how many white cells that island contains. Islands cannot touch each other (even diagonally), all sea cells must form one connected group, and no 2&times;2 block of sea is allowed. Every puzzle has exactly one solution.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>How do I mark a cell?</h3>
+                <p>Tap a cell once to fill it as sea. Tap again to mark it with a dot (confirmed island). Tap a third time to clear it back to empty.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>What tools are available during a puzzle?</h3>
+                <p>The toolbar at the bottom gives you five tools: <strong>Undo</strong> to revert your last move, <strong>Redo</strong> to re-apply it, <strong>Clear</strong> to reset the entire grid, <strong>Flood</strong> to fill every empty cell as sea, and <strong>Hint</strong> to reveal a cell.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>What does the hint button do?</h3>
+                <p>The hint button reveals the correct state of one cell based on the puzzle's solution. It picks a cell you've gotten wrong first, or an empty cell if everything so far is correct. Each hint costs one hint credit.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>How do I get more hints?</h3>
+                <p>You receive 10 free hints each day through the daily check-in bonus. Just open the app once a day to claim them.</p>
+            </div>
+
+            <h4 class="faq-group-title">Progression</h4>
+
+            <div class="faq-item">
+                <h3>How do I unlock more levels?</h3>
+                <p>Levels unlock sequentially: complete a level to unlock the next one. You can also unlock the next level by watching a short ad. Daily challenge puzzles and shop puzzle packs are always accessible.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>Can I view or replay completed levels?</h3>
+                <p>You can tap a completed level to view the solved state, but there is no option to replay it from scratch. To solve a puzzle again, you would need to reset all progress in Settings (which clears every solved puzzle).</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>What are the board sizes?</h3>
+                <p>There are three main sizes: <strong>5&times;5</strong> (quick warm-ups), <strong>8&times;10</strong> (medium challenges), and <strong>10&times;15</strong> (deep puzzles). The shop also offers <strong>6&times;6</strong> puzzle packs.</p>
+            </div>
+
+            <h4 class="faq-group-title">Daily Challenge &amp; Streaks</h4>
+
+            <div class="faq-item">
+                <h3>How does the Daily Challenge work?</h3>
+                <p>Every day at noon (your local time), three new puzzles appear: one each in 5&times;5, 8&times;10, and 10&times;15. Complete all three to count the day toward your streak.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>How do streaks work?</h3>
+                <p>Your streak counts consecutive days where you complete all three daily puzzles. Streaks appear on the main menu and on the leaderboard, so you can compare with other players.</p>
+            </div>
+
+            <h4 class="faq-group-title">Settings &amp; Customization</h4>
+
+            <div class="faq-item">
+                <h3>How do I change the color theme?</h3>
+                <p>Open Settings from the main menu and tap any color swatch to apply a new theme. The change takes effect immediately across the entire app.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>Is my progress saved?</h3>
+                <p>Yes. Your progress, settings, and puzzle state are saved on your device and, when signed in to Game Center (iOS) or Play Games (Android), also synced to the cloud. That way you can restore your progress if you switch devices or reinstall the app.</p>
+            </div>
+
+            <h4 class="faq-group-title">Shop &amp; Purchases</h4>
+
+            <div class="faq-item">
+                <h3>What can I buy in the shop?</h3>
+                <p>The shop offers additional puzzle packs in 6&times;6, 8&times;10, and 10&times;15 sizes. There's also an option to remove all ads permanently.</p>
+            </div>
+
+            <h4 class="faq-group-title">Troubleshooting</h4>
+
+            <div class="faq-item">
+                <h3>The app isn't working properly. What should I do?</h3>
+                <p>Try closing and reopening the app. If the issue persists, make sure you're running the latest version. If it still doesn't work, contact us at <a href="mailto:support@nurikabeislands.com">support@nurikabeislands.com</a> with your device model and a description of the problem.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>I lost my progress. Can it be restored?</h3>
+                <p>If you were signed in to Game Center (iOS) or Play Games (Android), your progress is backed up in the cloud. Sign in again on your device and the app will offer to restore it. If you weren't signed in, progress is stored only on the device and cannot be recovered after uninstalling.</p>
+            </div>
+        </main>
+    </div>
+
+    <svg class="content-wave-bottom" viewBox="0 0 1440 40" preserveAspectRatio="none">
+        <path d="M0,16 C240,0 480,32 720,16 C960,0 1200,32 1440,16 L1440,0 L0,0 Z" fill="white"/>
+    </svg>
+
     <footer>
         <div class="container">
             <div class="footer-links">
@@ -240,8 +408,11 @@
                 <a href="privacy.html">Privacy Policy</a>
                 <a href="support.html">Support</a>
             </div>
-            <p class="copyright">© 2026 Nurikabe Islands. All rights reserved.</p>
+            <p class="copyright">&copy; 2026 Nurikabe Islands</p>
         </div>
     </footer>
+
+</div>
+
 </body>
 </html>
