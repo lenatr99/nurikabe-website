@@ -1,0 +1,49 @@
+title: Pravilnik o zasebnosti - Nurikabe Islands
+description: Pravilnik o zasebnosti za Nurikabe Islands
+heading: Pravilnik o zasebnosti
+updated: "Zadnja posodobitev: 4. april 2026"
+intro: >-
+  Razvijalec (»mi«, »naš« ali »nas«) upravlja mobilno aplikacijo Nurikabe Islands (»aplikacija«).
+  Na tej strani so opisana naša pravila glede zbiranja, uporabe in razkrivanja osebnih podatkov, ko
+  uporabljate našo aplikacijo.
+sections:
+  - heading: Podatki, ki jih zbiramo
+    body: |
+      Aplikacija Nurikabe Islands je zasnovana z mislijo na vašo zasebnost. Zbiramo čim manj podatkov:
+
+      - **Napredek v igri:** vaš napredek pri ugankah in nastavitve so shranjeni v vaši napravi. Ko ste prijavljeni v Game Center (iOS) ali Play Igre (Android), se napredek sinhronizira tudi v njihov oblak, da ga lahko obnovite v novi napravi. Do teh podatkov nimamo dostopa.
+      - **Analitika:** zbiramo lahko anonimne statistične podatke o uporabi in diagnostiko prikazovanja oglasov, da izboljšamo aplikacijo in zanesljivost oglasov. Na podlagi teh podatkov vas ni mogoče osebno prepoznati.
+  - heading: Oglaševanje
+    body: |
+      Naša aplikacija za prikazovanje oglasov uporablja Google AdMob. Google lahko zbira in uporablja podatke za prilagojeno oglaševanje. Več o tem, kako Google uporablja podatke, si lahko preberete v [Googlovem pravilniku o zasebnosti](https://policies.google.com/privacy?hl=sl){:target="_blank" rel="noopener"}.
+
+      Prilagojenemu oglaševanju se lahko odpoveste v nastavitvah naprave ali v nastavitvah oglasov v aplikaciji.
+  - heading: Preglednost sledenja v aplikacijah (App Tracking Transparency)
+    body: >-
+      V sistemu iOS 14.5 in novejših vas pred sledenjem vaši dejavnosti v aplikacijah in na spletnih
+      mestih drugih podjetij za namene oglaševanja prosimo za dovoljenje. To dovoljenje lahko kadar
+      koli spremenite v nastavitvah naprave.
+  - heading: Shranjevanje podatkov
+    body: >-
+      Podatki igre (napredek, nastavitve, preference) so shranjeni v vaši napravi. Ko se prijavite v
+      Game Center (iOS) ali Play Igre (Android), se ti podatki varnostno kopirajo tudi v njihove
+      storitve v oblaku, da jih lahko obnovite v drugi napravi. Vaših podatkov igre ne zbiramo, ne
+      shranjujemo in ne pošiljamo na lastne strežnike.
+  - heading: Zasebnost otrok
+    body: >-
+      Naša aplikacija zavestno ne zbira osebnih podatkov otrok, mlajših od 13 let. Aplikacija je
+      primerna za vse starosti in za delovanje ne potrebuje nobenih osebnih podatkov.
+  - heading: Storitve tretjih oseb
+    body: >-
+      Naša aplikacija lahko vsebuje povezave do storitev tretjih oseb. Za prakse varovanja
+      zasebnosti teh zunanjih spletnih mest nismo odgovorni. Priporočamo, da preberete njihove
+      pravilnike o zasebnosti.
+  - heading: Spremembe tega pravilnika
+    body: >-
+      Pravilnik o zasebnosti lahko občasno posodobimo. O spremembah vas bomo obvestili tako, da bomo
+      nov pravilnik objavili na tej strani in posodobili datum »Zadnja posodobitev«.
+  - heading: Kontakt
+    body: |
+      Če imate kakršna koli vprašanja o tem pravilniku o zasebnosti, nam pišite na:
+
+      [support@nurikabeislands.com](mailto:support@nurikabeislands.com)

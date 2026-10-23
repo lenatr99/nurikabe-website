@@ -1,0 +1,18 @@
+{%- assign t = site.data.i18n[page.lang] -%}
+{%- assign translations = page.translations | default: layout.translations %}
+    <nav>
+        <div class="container">
+            <a href="{{ '/' | relative_url }}" class="nav-brand">
+                <img src="{{ '/assets/images/logo.png' | relative_url }}" alt="{{ site.title }}">
+                <span>{{ site.title }}</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="{{ t.privacy_url | relative_url }}">{{ t.privacy }}</a></li>
+                <li><a href="{{ '/support.html' | relative_url }}">{{ t.support }}</a></li>
+                {%- for translation in translations %}{% unless translation[0] == page.lang %}
+                {%- assign code = translation[0] %}
+                <li><a href="{{ translation[1] | relative_url }}" lang="{{ code }}" hreflang="{{ code }}">{{ site.data.i18n[code].language }}</a></li>
+                {%- endunless %}{% endfor %}
+            </ul>
+        </div>
+    </nav>

@@ -1,0 +1,17 @@
+title: Nurikabe Islands
+url: https://nurikabeislands.com
+email: support@nurikabeislands.com
+copyright: © 2026 Nurikabe Islands
+
+app_store_id: "6757597395"
+app_store_url: https://apps.apple.com/app/id6757597395
+google_play_url: https://play.google.com/store/apps/details?id=com.nurikabe.android
+
+exclude:
+  - README.md
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      lang: en

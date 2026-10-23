@@ -1,0 +1,10 @@
+/* Privacy policy pages. */
+
+.page-header p { font-size: 0.9rem; opacity: 0.75; }
+
+.panel-body h2 { font-size: 1.3rem; font-weight: 700; color: var(--text-pink); margin: 36px 0 12px; }
+.panel-body p,
+.panel-body ul { color: var(--text-muted); margin-bottom: 14px; font-size: 0.95rem; }
+.panel-body ul { margin-left: 20px; }
+.panel-body li { margin-bottom: 6px; }
+.panel-body a { color: var(--text-pink); }

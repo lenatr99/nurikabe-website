@@ -1,0 +1,14 @@
+{% comment %}A white band with wavy edges. Pass the inner HTML as `body`.{% endcomment %}
+        <section class="panel{% if include.class %} {{ include.class }}{% endif %}"{% if include.id %} id="{{ include.id }}"{% endif %}>
+            <svg class="wave wave-top" viewBox="0 0 1440 40" preserveAspectRatio="none" aria-hidden="true">
+                <path d="M0,24 C240,40 480,8 720,24 C960,40 1200,8 1440,24 L1440,40 L0,40 Z"/>
+            </svg>
+            <div class="panel-body">
+                <div class="container">
+{{ include.body }}
+                </div>
+            </div>
+            <svg class="wave wave-bottom" viewBox="0 0 1440 40" preserveAspectRatio="none" aria-hidden="true">
+                <path d="M0,16 C240,0 480,32 720,16 C960,0 1200,32 1440,16 L1440,0 L0,0 Z"/>
+            </svg>
+        </section>

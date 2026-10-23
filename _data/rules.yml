@@ -1,0 +1,5 @@
+# The four rules of Nurikabe, shown on the home page.
+- Build each island from cells joined along their edges. It must contain exactly one number and that many cells, including the numbered cell.
+- "Keep islands separate: they cannot share an edge, but they can touch diagonally."
+- Fill the remaining cells with sea. All sea cells must connect along their edges into one continuous area.
+- Leave no 2×2 square filled entirely with sea.

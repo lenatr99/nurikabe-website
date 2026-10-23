@@ -1,0 +1,17 @@
+# Interface strings shared by every page, per language.
+en:
+  language: English
+  home: Home
+  privacy: Privacy
+  privacy_policy: Privacy Policy
+  privacy_url: /privacy.html
+  support: Support
+  contact: Contact
+sl:
+  language: Slovenščina
+  home: Domov
+  privacy: Zasebnost
+  privacy_policy: Pravilnik o zasebnosti
+  privacy_url: /privacy-sl.html
+  support: Podpora
+  contact: Kontakt

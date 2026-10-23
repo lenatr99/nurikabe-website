@@ -1,0 +1,18 @@
+---
+layout: default
+width: narrow
+stylesheet: privacy
+translations:
+  en: /privacy-en.html
+  sl: /privacy-sl.html
+---
+{% assign policy = site.data.privacy[page.lang] %}
+{% include page-header.html title=policy.heading subtitle=policy.updated %}
+{% capture body %}
+{{ policy.intro | markdownify }}
+{% for section in policy.sections %}
+<h2>{{ section.heading }}</h2>
+{{ section.body | markdownify }}
+{% endfor %}
+{% endcapture %}
+{% include panel.html body=body %}

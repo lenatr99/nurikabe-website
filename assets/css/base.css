@@ -1,0 +1,112 @@
+/* Shared by every page: colors, layout, nav, footer, page header, panels. */
+
+:root {
+    --pink: #E888AB;
+    --pink-light: #F2A7C3;
+    --pink-tint: #FDF2F6;
+    --pink-line: #F5D5E3;
+    --white: #ffffff;
+    --text-pink: #D4799B;
+    --text-dark: #2c2c2c;
+    --text-muted: #666;
+    --card-shadow: rgba(0, 0, 0, 0.06);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Nunito', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--pink);
+    color: var(--text-dark);
+    min-height: 100vh;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+body.narrow { line-height: 1.7; }
+
+.page { position: relative; z-index: 1; }
+
+.container { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+.narrow .container { max-width: 760px; }
+
+/* ---- Scattered background numbers, like the game ---- */
+.bg-numbers {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.bg-numbers span {
+    position: absolute;
+    font-weight: 800;
+    color: var(--pink-light);
+    opacity: 0.5;
+}
+
+.bg-numbers .n1  { top: 8%;  left: 4%;   font-size: 1.6rem; transform: rotate(-8deg); }
+.bg-numbers .n2  { top: 18%; right: 6%;  font-size: 1.2rem; transform: rotate(12deg); }
+.bg-numbers .n3  { top: 32%; left: 9%;   font-size: 2rem;   transform: rotate(-3deg); }
+.bg-numbers .n4  { top: 44%; right: 12%; font-size: 1.4rem; transform: rotate(6deg); }
+.bg-numbers .n5  { top: 55%; left: 3%;   font-size: 1.8rem; transform: rotate(-15deg); }
+.bg-numbers .n6  { top: 65%; right: 5%;  font-size: 1.3rem; transform: rotate(20deg); }
+.bg-numbers .n7  { top: 78%; left: 14%;  font-size: 1.5rem; transform: rotate(4deg); }
+.bg-numbers .n8  { top: 88%; right: 9%;  font-size: 1.7rem; transform: rotate(-10deg); }
+.bg-numbers .n9  { top: 12%; left: 45%;  font-size: 1.1rem; transform: rotate(8deg); }
+.bg-numbers .n10 { top: 72%; left: 40%;  font-size: 1.3rem; transform: rotate(-5deg); }
+.bg-numbers .n11 { top: 38%; right: 35%; font-size: 1.0rem; transform: rotate(14deg); }
+.bg-numbers .n12 { top: 92%; left: 50%;  font-size: 1.6rem; transform: rotate(-12deg); }
+
+/* ---- Nav ---- */
+nav { padding: 20px 0; }
+nav .container { display: flex; justify-content: space-between; align-items: center; }
+
+.nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.nav-brand img { width: 32px; height: 32px; }
+.nav-brand span { font-weight: 700; font-size: 1.1rem; color: var(--white); }
+
+.nav-links { display: flex; gap: 28px; list-style: none; align-items: center; }
+.nav-links a {
+    color: var(--white);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    opacity: 0.85;
+    transition: opacity 0.2s;
+}
+.nav-links a:hover { opacity: 1; }
+
+/* ---- Page header (support, privacy) ---- */
+.page-header { text-align: center; padding: 48px 0 40px; }
+.page-header h1 { font-size: 2.2rem; font-weight: 800; color: var(--white); margin-bottom: 8px; }
+.page-header p { font-size: 1.05rem; color: var(--white); opacity: 0.9; }
+
+/* ---- White panel with wavy edges ---- */
+.wave { display: block; width: 100%; height: 40px; }
+.wave path { fill: var(--white); }
+.wave-top { margin-bottom: -1px; }
+.wave-bottom { margin-top: -1px; }
+.panel-body { background: var(--white); padding: 48px 0 64px; }
+
+/* ---- Footer ---- */
+footer { padding: 40px 0 48px; text-align: center; }
+
+.footer-links { display: flex; justify-content: center; gap: 28px; margin-bottom: 16px; flex-wrap: wrap; }
+.footer-links a {
+    color: var(--white);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+}
+.footer-links a:hover { opacity: 1; }
+
+.copyright { font-size: 0.8rem; color: var(--white); opacity: 0.6; }
+
+@media (max-width: 640px) {
+    .nav-links { gap: 16px; }
+    .page-header h1 { font-size: 1.8rem; }
+}

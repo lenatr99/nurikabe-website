@@ -1,0 +1,19 @@
+# Home page feature cards. `icon` names a file in _includes/icons/.
+- title: 180 Puzzles to Explore
+  icon: grid
+  text: Start small with 5×5 grids, then stretch your skills on 8×10 and 10×15 boards. Extra puzzle packs await in the shop.
+- title: Daily Challenge
+  icon: calendar
+  text: Make a little time for logic with three fresh puzzles each day. Solve all three to keep your daily streak growing.
+- title: Make It Your Own
+  icon: theme
+  text: Choose a color theme in Settings and settle into a puzzle space that feels like yours.
+- title: Achievements & Leaderboards
+  icon: flag
+  text: Celebrate your solving milestones with achievements, or see how your daily results compare with other players.
+- title: Play Offline, at Your Pace
+  icon: cloud
+  text: Take the core puzzles wherever you go. Progress saves automatically on your device, so you can pick up where you left off.
+- title: Free to Play
+  icon: gift
+  text: Download for free and start solving. Optional rewarded ads offer hints and level unlocks, with extra puzzle packs available to buy.

@@ -1,0 +1,38 @@
+/* Support page: contact card and FAQ. */
+
+.contact-card {
+    background: var(--pink-tint);
+    border-radius: 20px;
+    padding: 32px;
+    text-align: center;
+    margin-bottom: 48px;
+}
+
+.contact-card h2 { font-size: 1.15rem; font-weight: 700; color: var(--text-pink); margin-bottom: 8px; }
+.contact-card p { color: var(--text-muted); margin-bottom: 12px; }
+
+.contact-card a {
+    color: var(--text-pink);
+    font-weight: 700;
+    font-size: 1.05rem;
+    text-decoration: none;
+    overflow-wrap: anywhere;
+}
+.contact-card a:hover { text-decoration: underline; }
+
+.faq-heading { font-size: 1.4rem; font-weight: 800; color: var(--text-pink); margin-bottom: 24px; }
+
+.faq-group {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-pink);
+    margin: 32px 0 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--pink-line);
+}
+.faq-group:first-of-type { margin-top: 0; }
+
+.faq-item { background: #FAFAFA; border-radius: 14px; padding: 20px 24px; margin-bottom: 12px; }
+.faq-item h4 { font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
+.faq-item p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; }
+.faq-item a { color: var(--text-pink); }

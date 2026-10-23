@@ -1,0 +1,112 @@
+/* Home page: hero, rules, feature cards. */
+
+/* ---- Hero ---- */
+.hero { text-align: center; padding: 60px 0 80px; }
+
+.hero-logo {
+    width: 72px;
+    height: 72px;
+    margin-bottom: 12px;
+    animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
+.hero h1 { font-size: 2.8rem; font-weight: 800; color: var(--white); line-height: 1.1; margin-bottom: 2px; }
+.hero .subtitle { font-size: 1.15rem; font-weight: 600; color: var(--white); opacity: 0.85; margin-bottom: 24px; }
+.hero .tagline { font-size: 1.1rem; color: var(--white); opacity: 0.9; max-width: 480px; margin: 0 auto 40px; }
+
+.store-badges { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; align-items: center; }
+.store-badges a { display: block; transition: transform 0.2s; }
+.store-badges a:hover { transform: translateY(-2px); }
+.store-badges .badge-apple img { height: 48px; }
+.store-badges .badge-google img { height: 70px; margin: -10px 0; }
+
+/* ---- How to play ---- */
+.rules .panel-body { padding-bottom: 56px; }
+
+.rules h2 {
+    text-align: center;
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--text-pink);
+    margin-bottom: 28px;
+}
+
+.rules-list { list-style: none; display: grid; gap: 16px; max-width: 520px; margin: 0 auto; }
+
+.rules-list li { display: flex; align-items: flex-start; gap: 14px; font-size: 1rem; line-height: 1.5; }
+
+.rule-number {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 0.85rem;
+    color: var(--white);
+    background: var(--pink);
+}
+
+/* ---- Features ---- */
+.features { padding: 0 0 80px; }
+
+.features h2 {
+    text-align: center;
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--white);
+    margin-bottom: 32px;
+}
+
+.feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+
+.feature-card {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 32px 24px;
+    text-align: center;
+    box-shadow: 0 4px 24px var(--card-shadow);
+    transition: transform 0.2s;
+}
+.feature-card:hover { transform: translateY(-3px); }
+
+.feature-card .icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    background: var(--pink);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+}
+
+.feature-card .icon svg {
+    width: 24px;
+    height: 24px;
+    fill: none;
+    stroke: var(--white);
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+.feature-card .icon svg.icon-fill { fill: var(--white); stroke: none; }
+
+.feature-card h3 { font-size: 1.05rem; font-weight: 700; color: var(--text-pink); margin-bottom: 6px; }
+.feature-card p { font-size: 0.9rem; color: #777; line-height: 1.5; }
+
+@media (max-width: 640px) {
+    .hero { padding: 40px 0 60px; }
+    .hero h1 { font-size: 2.1rem; }
+    .hero .subtitle { font-size: 1rem; }
+    .hero .tagline { font-size: 0.95rem; }
+    .feature-grid { grid-template-columns: 1fr; }
+    .store-badges { flex-direction: column; }
+}

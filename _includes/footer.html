@@ -1,0 +1,12 @@
+{%- assign t = site.data.i18n[page.lang] %}
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="{{ '/' | relative_url }}">{{ t.home }}</a>
+                <a href="{{ t.privacy_url | relative_url }}">{{ t.privacy_policy }}</a>
+                <a href="{{ '/support.html' | relative_url }}">{{ t.support }}</a>
+                <a href="mailto:{{ site.email }}">{{ t.contact }}</a>
+            </div>
+            <p class="copyright">{{ site.copyright }}</p>
+        </div>
+    </footer>
